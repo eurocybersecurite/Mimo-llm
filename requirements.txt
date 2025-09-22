@@ -1,0 +1,7 @@
+transformers>=4.35
+datasets>=2.14
+accelerate>=0.22
+bitsandbytes>=0.41
+peft>=0.4.0
+torch>=2.1
+git-lfs

@@ -1,0 +1,11 @@
+# Ignore checkpoints and logs
+checkpoints/
+logs/
+
+# Ignore model files
+*.bin
+*.safetensors
+
+# Ignore Python cache and Mimo directory
+__pycache__/
+Mimo/
