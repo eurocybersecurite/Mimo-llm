@@ -1,10 +1,9 @@
 # 🚀 Mimo Language Model
 
-Mimo est un modèle de langage open-source fine-tuné pour exceller à la fois en **génération de code** et en **conversations naturelles**.  
+Mimo est un modèle de langage AI pour exceller à la fois en **génération de code** et en **conversations naturelles**.  
 Il est issu d'un mélange de datasets puissants.
 
 ![Mimo](assets/mimo.png)
-![Mimo Conv Code](assets/mimo_conv_code.png)
 
 ---
 
@@ -49,9 +48,13 @@ Lancez le fine-tuning avec :
 python fine_tune_mimo.py
 ```
 
-- Utilise vos données perso (`mohamed.jsonl`)  
+**IMPORTANT :** Remplacez `example.jsonl` par votre propre fichier de dataset avant d'exécuter ce script. Le fichier `example.jsonl` contient quelques exemples fictifs à des fins de démonstration.
+
+- Utilise vos données perso (`example.jsonl`)  
 - Combine un sous-ensemble du dataset public `mosaicml/instruct-v3`  
 - Sauvegarde les poids et tokenizer dans `./Mimo`  
+
+⚠️ **Note de sécurité** : ne publiez jamais vos données privées ou sensibles dans le dépôt public.
 
 ---
 
@@ -87,7 +90,8 @@ print(mimo_tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 ➡️ **Mimo surpasse la version de base** sur les benchmarks internes (code + QA).
 
-![Mimo](assets/mimo_conv_code.png)
+![Mimo Performance](assets/mimo_conv_code.png)
+
 ---
 
 ## 📂 Structure du dépôt
@@ -96,10 +100,12 @@ print(mimo_tokenizer.decode(outputs[0], skip_special_tokens=True))
 Mimo/
 ├── README.md
 ├── assets/mimo.png
-├── mohamed.jsonl
+├── assets/mimo_conv_code.png
+├── example.jsonl        # Jeu de données fictif
 ├── fine_tune_mimo.py
 ├── requirements.txt
-└── .gitignore
+├── .gitignore
+└── LICENSE
 ```
 
 ---
@@ -119,7 +125,17 @@ Mimo/
    - `fine_tune_mimo.py` → pour l’entraînement  
    - un script d’inférence personnalisé  
 
-⚡ Vous pouvez aussi utiliser Mimo dans **LM Studio** en important la version quantisée GGUF ou autre Format.
+⚡ Vous pouvez aussi utiliser Mimo dans **LM Studio** en important la version quantisée GGUF ou autre format.
+
+---
+
+## 📜 Licence
+
+Ce projet est sous licence **Apache 2.0**.  
+Voir le fichier [LICENSE](LICENSE) pour les détails.
+
+⚠️ **Note importante** : le fichier `example.jsonl` est fourni uniquement comme exemple.  
+N’incluez jamais vos données sensibles ou privées dans le dépôt public.
 
 ---
 
@@ -128,3 +144,4 @@ Mimo/
 - **Nom** : ABDESSEMED Mohamed  
 - **Entreprise** : Eurocybersecurite  
 - **Contact** : mohamed.abdessemed@eurocybersecurite.fr
+
