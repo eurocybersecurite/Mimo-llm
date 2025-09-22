@@ -74,11 +74,6 @@ Mimo/
 
 ```
 
----
-Auteur : ABDESSEMED Mohamed
-Entreprise : Eurocybersecurite
-Contact : mohamed.abdessemed@eurocybersecurite.fr
-
 ## Intégration et Utilisation de Mimo
 
 ### Sur Mac et PC (via VSCode ou terminal)
@@ -176,3 +171,8 @@ print(generated_conversation)
 
 **Note sur la visibilité du dépôt :**
 Je ne peux pas modifier les paramètres de visibilité du dépôt GitHub. Vous devrez vous rendre sur GitHub et rendre le dépôt public manuellement si vous le souhaitez.
+
+---
+Auteur : ABDESSEMED Mohamed
+Entreprise : Eurocybersecurite
+Contact : mohamed.abdessemed@eurocybersecurite.fr
