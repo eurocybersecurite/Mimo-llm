@@ -3,7 +3,7 @@
 Mimo est un modèle de langage open-source fine-tuné pour exceller à la fois en **génération de code** et en **conversations naturelles**.  
 Grâce à son architecture basée sur **DeepSeek-Qwen-1.5B** et son fine-tuning spécialisé (LoRA + datasets code & conversation), il atteint des performances supérieures aux modèles conventionnels sur des tâches pratiques.
 
-![Mimo](assets/mimo.png)
+
 ![Mimo Conv Code](assets/mimo_conv_code.png)
 
 ---
