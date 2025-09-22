@@ -86,6 +86,7 @@ print(mimo_tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 ➡️ **Mimo surpasse la version de base** sur les benchmarks internes (code + QA).
 
+! [Mimo](assets/mimo_conv_code.png)_code.png
 ---
 
 ## 📂 Structure du dépôt
@@ -117,7 +118,7 @@ Mimo/
    - `fine_tune_mimo.py` → pour l’entraînement  
    - un script d’inférence personnalisé  
 
-⚡ Vous pouvez aussi utiliser Mimo dans **LM Studio** en important la version quantisée GGUF.
+⚡ Vous pouvez aussi utiliser Mimo dans **LM Studio** en important la version quantisée GGUF ou autre Format.
 
 ---
 
