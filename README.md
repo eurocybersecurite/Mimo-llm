@@ -1,6 +1,6 @@
 # Mimo Language Model
 
-Mimo est un modèle de langage fine-tuné sur DeepSeek-R1-Distill-Qwen-1.5B pour les tâches de code et de conversation, utilisant la technique LoRA.
+Mimo est un modèle de langage autonome et puissant, conçu pour exceller dans les tâches de code et de conversation, surpassant les modèles conventionnels grâce à son architecture avancée et son fine-tuning spécialisé.
 
 ![Mimo](assets/mimo.png)
 
@@ -71,3 +71,10 @@ Mimo/
 ├── fine_tune_mimo.py
 ├── requirements.txt
 └── .gitignore
+
+```
+
+---
+Auteur : ABDESSEMED Mohamed
+Entreprise : Eurocybersecurite
+Contact : mohamed.abdessemed@eurocybersecurite.fr
