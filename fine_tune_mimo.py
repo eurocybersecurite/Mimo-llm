@@ -8,27 +8,27 @@ from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
 hf_token = os.environ.get("HF_TOKEN") # Ensure HF_TOKEN is set in your environment
 lora_config = LoraConfig(
-    r=8,
-    lora_alpha=16,
-    target_modules=["q_proj", "v_proj"],
-    lora_dropout=0.1,
-    bias="none",
-    task_type="CAUSAL_LM"
+    r=8, # LoRA attention dimension.
+    lora_alpha=16, # Alpha parameter for LoRA scaling.
+    target_modules=["q_proj", "v_proj"], # Modules to apply LoRA to.
+    lora_dropout=0.1, # Dropout probability for LoRA layers.
+    bias="none", # Bias type for LoRA.
+    task_type="CAUSAL_LM" # Task type for LoRA.
 )
 
 training_args = TrainingArguments(
-    output_dir="./Mimo",
-    report_to="none",
-    fp16=True, # Use mixed precision training
-    batch_size=2, # Reduced batch size for memory efficiency
-    num_train_epochs=1,
-    save_strategy="epoch", # Save model at the end of each epoch
-    logging_dir='./logs',
-    logging_steps=10,
-    learning_rate=2e-4, # Common learning rate for LoRA
-    max_grad_norm=0.3, # Gradient clipping
-    warmup_ratio=0.03, # Warmup steps
-    lr_scheduler_type="constant", # Learning rate scheduler
+    output_dir="./Mimo", # Directory to save the model checkpoints.
+    report_to="none", # Disable reporting to external services.
+    fp16=True, # Use mixed precision training for faster training and less memory.
+    batch_size=2, # Reduced batch size for memory efficiency (compatible with 8-12GB RAM).
+    num_train_epochs=1, # Number of training epochs.
+    save_strategy="epoch", # Save model at the end of each epoch.
+    logging_dir='./logs', # Directory for logs.
+    logging_steps=10, # Log every 10 steps.
+    learning_rate=2e-4, # Common learning rate for LoRA.
+    max_grad_norm=0.3, # Gradient clipping to prevent exploding gradients.
+    warmup_ratio=0.03, # Warmup steps ratio.
+    lr_scheduler_type="constant", # Learning rate scheduler type.
 )
 
 # --- Load Data ---
@@ -63,12 +63,13 @@ else:
     raise ValueError("No datasets loaded. Please check data files and internet connection.")
 
 # --- Load Tokenizer and Model ---
+print("Loading tokenizer and model...")
 tokenizer = AutoTokenizer.from_pretrained(model_id, token=hf_token)
 # Set padding token if it's not already set
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-# Configure quantization for memory efficiency
+# Configure quantization for memory efficiency (4-bit)
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_quant_type="nf4",
@@ -92,14 +93,17 @@ model.print_trainable_parameters()
 
 # --- Tokenization Function ---
 def tokenize_function(examples):
-    # Adjust prompt formatting as needed for the specific model and dataset
-    # This is a basic example, you might need to adapt it based on DeepSeek-R1-Distill-Qwen-1.5B's expected format
+    """
+    Tokenizes the input examples for the model.
+    Adjust prompt formatting as needed for the specific model and dataset.
+    This is a basic example, you might need to adapt it based on DeepSeek-R1-Distill-Qwen-1.5B's expected format.
+    Ensure the response is always included for supervised fine-tuning.
+    """
     prompts = []
     for i in range(len(examples["instruction"])):
         instruction = examples["instruction"][i]
         response = examples["response"][i] if examples["response"][i] else ""
         # Simple prompt format: Instruction + Response. For conversational, you might need more complex formatting.
-        # Ensure the response is always included for supervised fine-tuning.
         prompt = f"### Instruction:\n{instruction}\n\n### Response:\n{response}{tokenizer.eos_token}"
         prompts.append(prompt)
 
@@ -107,6 +111,7 @@ def tokenize_function(examples):
 
 # Apply tokenization
 # Note: For large datasets, consider using .map with batched=True and num_proc
+print("Tokenizing dataset...")
 tokenized_dataset = combined_dataset.map(
     tokenize_function,
     batched=True,
@@ -114,6 +119,7 @@ tokenized_dataset = combined_dataset.map(
 )
 
 # --- Trainer ---
+print("Initializing Trainer...")
 trainer = Trainer(
     model=model,
     args=training_args,
