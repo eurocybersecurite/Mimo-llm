@@ -1,0 +1,7 @@
+{"instruction": "Écris une fonction Python pour calculer la somme des éléments d'une liste.", "response": "```python\ndef sum_list(numbers):\n    return sum(numbers)\n```"}
+{"instruction": "Explique brièvement le concept de 'cloud computing'.", "response": "Le cloud computing permet d'accéder à des ressources informatiques (serveurs, stockage, bases de données, logiciels) via Internet, offrant flexibilité et scalabilité sans nécessiter d'infrastructure physique locale."}
+{"instruction": "Génère un snippet HTML pour un lien simple.", "response": "```html\n<a href=\"https://www.example.com\">Visitez Example.com</a>\n```"}
+{"instruction": "Comment puis-je vérifier si un fichier existe en Python ?", "response": "Vous pouvez utiliser `os.path.exists('chemin/vers/votre/fichier')` pour vérifier si un fichier existe."}
+{"instruction": "Rédige une courte phrase pour confirmer la réception d'un message.", "response": "Message bien reçu, merci."}
+{"instruction": "Écris une requête SQL pour sélectionner le nom et l'email des utilisateurs actifs.", "response": "```sql\nSELECT name, email FROM users WHERE status = 'active';\n```"}
+{"instruction": "Génère une fonction JavaScript pour afficher un message dans la console.", "response": "```javascript\nconsole.log('Bonjour depuis JavaScript!');\n```"}

@@ -32,9 +32,10 @@ training_args = TrainingArguments(
 )
 
 # --- Load Data ---
-# Load custom data
+# IMPORTANT: Replace 'example.jsonl' with your own dataset file before running the script.
+# The 'example.jsonl' file contains a few fictitious examples for demonstration purposes.
 try:
-    custom_dataset = load_dataset('json', data_files='mohamed.jsonl', split='train')
+    custom_dataset = load_dataset('json', data_files='example.jsonl', split='train')
 except Exception as e:
     print(f"Error loading custom dataset: {e}")
     custom_dataset = None
