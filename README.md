@@ -24,9 +24,13 @@ Il est issu d'un mélange de datasets puissants.
   - [Précision en classification](#-4-précision-en-classification)
   - [Raisonnement avancé](#-5-raisonnement-avancé)
   - [Conscience artificielle](#-6-conscience-artificielle-concept)
+- [🏗️ Architecture Conceptuelle de Mimo](#-architecture-conceptuelle-de-mimo)
+- [📈 Évolution prospective](#-évolution-prospective)
+- [🔎 Architecture compacte (vue simplifiée)](#-architecture-compacte-vue-simplifiée)
 - [📂 Structure du dépôt](#-structure-du-dépôt)
 - [🛠️ Intégration dans VSCode](#-intégration-dans-vscode)
 - [📧 Auteur](#-auteur)
+
 
 ---
 
