@@ -199,6 +199,38 @@ Visualisation heatmap sur 5 axes : **Perception, Mémoire, Raisonnement, Créati
 
 ---
 
+---
+
+## 🏗️ Architecture Conceptuelle de Mimo
+
+Le schéma ci-dessous illustre de manière simplifiée le fonctionnement interne de **Mimo-LLM** :  
+il met en avant son double rôle **(Code + Conversation)**, son **apprentissage multi-datasets** et son orientation vers une **IA à haute conscience**.
+
+![Architecture Mimo](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/architect.png)
+
+---
+
+## 📈 Évolution prospective
+
+Mimo ne s’arrête pas en 2025. Sa progression est projetée jusqu’à 2050 avec un accent sur :  
+- L’amélioration des performances en **raisonnement**  
+- Une **conscience artificielle plus avancée**  
+- La capacité de rester **robuste et fiable** à long terme  
+
+### Évolution simple
+![Évolution Mimo](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/Évolution_prospect.png)
+
+### Version alternative
+![Évolution Mimo alternative](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/Évolution_prospective.p.png)
+
+---
+
+## 🔎 Architecture compacte (vue simplifiée)
+
+Pour les présentations, voici une version compacte et lisible de l’architecture interne de Mimo :  
+
+![Mimo Compact](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/mimo_llm_architecture_compact.png)
+
 ## 📂 Structure du dépôt
 
 ```
