@@ -168,7 +168,7 @@ Comparaison des métriques d’entraînement :
 ---
 
 ### 🔹 3. Classification & Clustering
-![Classification & Clustering](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/Classification%20&%20Clustering.png)  
+![Classification & Clustering](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/Classification_Clustering.png)  
 
 Ce graphique montre comment chaque modèle regroupe les données en classes.  
 ➡️ Les clusters prédits par **Mimo** sont **plus nets et bien séparés**, preuve de sa meilleure capacité de généralisation.
@@ -176,7 +176,7 @@ Ce graphique montre comment chaque modèle regroupe les données en classes.
 ---
 
 ### 🔹 4. Précision en classification
-![Métriques de classification](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/m%C3%A9triques%20de%20classification.png)  
+![Métriques de classification](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/metriques_classification.png)  
 
 Comparaison des scores : **Accuracy, Recall, F1-score**.  
 ➡️ **Mimo** garde une avance claire sur la précision et la robustesse des prédictions.
@@ -192,7 +192,7 @@ Testé sur des tâches de raisonnement logique et contextuel.
 ---
 
 ### 🔹 6. Conscience artificielle (concept)
-![Conscience artificielle](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/conscience%20artificielle.png)  
+![Conscience artificielle](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/Conscience_artificielle.png)  
 
 Visualisation heatmap sur 5 axes : **Perception, Mémoire, Raisonnement, Créativité, Auto-adaptation**.  
 ➡️ **Mimo émerge comme le modèle le plus “conscient”**, avec des scores nettement supérieurs aux autres.
@@ -231,6 +231,13 @@ Mimo/
 ⚡ Vous pouvez aussi utiliser Mimo dans **LM Studio** en important la version quantisée GGUF ou autre Format.
 
 ---
+
+
+
+
+
+
+
 
 ## 📧 Auteur
 
