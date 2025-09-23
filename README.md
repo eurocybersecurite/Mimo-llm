@@ -3,7 +3,30 @@
 Mimo est un modèle de langage AI pour exceller à la fois en **génération de code** et en **conversations naturelles**.  
 Il est issu d'un mélange de datasets puissants.
 
-![Mimo](assets/mimo.png)
+![Mimo](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/mimo.png)
+
+---
+
+## 📑 Table des matières
+
+- [✨ Points forts de Mimo](#-points-forts-de-mimo)
+- [📦 Installation](#-installation)
+- [🔑 Configuration](#-configuration)
+- [🏋️ Fine-tuning](#-fine-tuning)
+- [🧑‍💻 Exemples d’utilisation](#-exemples-dutilisation)
+  - [Génération de code](#génération-de-code)
+  - [Conversation](#conversation)
+- [📊 Performances comparatives](#-performances-comparatives)
+- [🧠 Visualisations comparatives](#-visualisations-comparatives)
+  - [Radar de performance](#-1-radar-de-performance)
+  - [Entraînement & efficacité](#-2-entrainement--efficacité)
+  - [Classification & Clustering](#-3-classification--clustering)
+  - [Précision en classification](#-4-précision-en-classification)
+  - [Raisonnement avancé](#-5-raisonnement-avancé)
+  - [Conscience artificielle](#-6-conscience-artificielle-concept)
+- [📂 Structure du dépôt](#-structure-du-dépôt)
+- [🛠️ Intégration dans VSCode](#-intégration-dans-vscode)
+- [📧 Auteur](#-auteur)
 
 ---
 
@@ -18,11 +41,19 @@ Il est issu d'un mélange de datasets puissants.
 
 ## 📦 Installation
 
-Clonez le dépôt et installez les dépendances :
+Clonez le dépôt et installez les dépendances dans un environnement virtuel :
 
 ```bash
-git clone https://github.com/votre-utilisateur/mimo-llm.git
-cd mimo-llm
+# Cloner le dépôt
+git clone https://github.com/eurocybersecurite/Mimo-llm.git
+cd Mimo-llm
+
+# Créer et activer un environnement virtuel (recommandé)
+python3 -m venv .venv
+source .venv/bin/activate  # Sur Linux/macOS
+# Ou sur Windows : .\.venv\Scripts\activate
+
+# Installer les dépendances
 pip install -r requirements.txt
 ```
 
@@ -37,6 +68,7 @@ Avant toute utilisation, configurez votre **Hugging Face Token** :
 ```bash
 export HF_TOKEN="votre_token_hugging_face"
 ```
+(Remplacez `"votre_token_hugging_face"` par votre véritable token.)
 
 ---
 
@@ -54,8 +86,6 @@ python fine_tune_mimo.py
 - Combine un sous-ensemble du dataset public `mosaicml/instruct-v3`  
 - Sauvegarde les poids et tokenizer dans `./Mimo`  
 
-⚠️ **Note de sécurité** : ne publiez jamais vos données privées ou sensibles dans le dépôt public.
-
 ---
 
 ## 🧑‍💻 Exemples d’utilisation
@@ -63,19 +93,38 @@ python fine_tune_mimo.py
 ### Génération de code
 
 ```python
-prompt = "Écris une fonction Python pour trier une liste."
-inputs = mimo_tokenizer(prompt, return_tensors="pt")
-outputs = mimo_model.generate(**inputs, max_new_tokens=100)
-print(mimo_tokenizer.decode(outputs[0], skip_special_tokens=True))
+# Assurez-vous que le modèle et le tokenizer sont chargés correctement
+# Exemple d'inférence pour la génération de code
+prompt_code = "Écris une fonction Python pour calculer la somme des éléments d'une liste."
+inputs_code = tokenizer(prompt_code, return_tensors="pt").to(model.device)
+
+with torch.no_grad():
+    outputs_code = model.generate(
+        **inputs_code,
+        max_new_tokens=100,
+        pad_token_id=tokenizer.eos_token_id
+    )
+generated_code = tokenizer.decode(outputs_code[0], skip_special_tokens=True)
+print("--- Génération de Code ---")
+print(generated_code)
 ```
 
 ### Conversation
 
 ```python
-prompt = "Quelle est la meilleure façon d'apprendre une nouvelle langue ?"
-inputs = mimo_tokenizer(prompt, return_tensors="pt")
-outputs = mimo_model.generate(**inputs, max_new_tokens=150)
-print(mimo_tokenizer.decode(outputs[0], skip_special_tokens=True))
+# Exemple d'inférence pour la conversation
+prompt_conversation = "Quelle est la meilleure façon d'apprendre une nouvelle langue ?"
+inputs_conversation = tokenizer(prompt_conversation, return_tensors="pt").to(model.device)
+
+with torch.no_grad():
+    outputs_conversation = model.generate(
+        **inputs_conversation,
+        max_new_tokens=50,
+        pad_token_id=tokenizer.eos_token_id
+    )
+generated_conversation = tokenizer.decode(outputs_conversation[0], skip_special_tokens=True)
+print("\n--- Génération de Conversation ---")
+print(generated_conversation)
 ```
 
 ---
@@ -90,7 +139,63 @@ print(mimo_tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 ➡️ **Mimo surpasse la version de base** sur les benchmarks internes (code + QA).
 
-![Mimo Performance](assets/mimo_conv_code.png)
+![Mimo Performance](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/mimo_conv_code.png)
+
+---
+
+## 🧠 Visualisations comparatives
+
+Afin d’illustrer les forces de **Mimo** par rapport aux autres modèles, plusieurs visualisations ont été générées à partir de benchmarks internes (Septembre 2025).  
+
+### 🔹 1. Radar de performance
+![Radar Performance](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/performance_radar.png)  
+
+Ce diagramme radar compare les capacités globales (Code, Conversation, Mémoire, Raisonnement).  
+➡️ **Mimo domine** sur tous les axes, montrant son équilibre entre compréhension et génération.
+
+---
+
+### 🔹 2. Entraînement & efficacité
+![Entraînement](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/entrainement.png)  
+
+Comparaison des métriques d’entraînement :  
+- ⏱ Temps d’entraînement plus court  
+- 📉 Perte finale plus faible  
+- 💾 Mémoire optimisée  
+
+➡️ **Mimo apprend plus vite et avec moins de ressources**.
+
+---
+
+### 🔹 3. Classification & Clustering
+![Classification & Clustering](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/Classification%20&%20Clustering.png)  
+
+Ce graphique montre comment chaque modèle regroupe les données en classes.  
+➡️ Les clusters prédits par **Mimo** sont **plus nets et bien séparés**, preuve de sa meilleure capacité de généralisation.
+
+---
+
+### 🔹 4. Précision en classification
+![Métriques de classification](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/m%C3%A9triques%20de%20classification.png)  
+
+Comparaison des scores : **Accuracy, Recall, F1-score**.  
+➡️ **Mimo** garde une avance claire sur la précision et la robustesse des prédictions.
+
+---
+
+### 🔹 5. Raisonnement avancé
+![Raisonnement Mimo](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/resennement_mimo.png)  
+
+Testé sur des tâches de raisonnement logique et contextuel.  
+➡️ **Mimo** démontre une supériorité dans la résolution de problèmes complexes.
+
+---
+
+### 🔹 6. Conscience artificielle (concept)
+![Conscience artificielle](https://raw.githubusercontent.com/eurocybersecurite/Mimo-llm/main/assets/conscience%20artificielle.png)  
+
+Visualisation heatmap sur 5 axes : **Perception, Mémoire, Raisonnement, Créativité, Auto-adaptation**.  
+➡️ **Mimo émerge comme le modèle le plus “conscient”**, avec des scores nettement supérieurs aux autres.
 
 ---
 
@@ -100,12 +205,10 @@ print(mimo_tokenizer.decode(outputs[0], skip_special_tokens=True))
 Mimo/
 ├── README.md
 ├── assets/mimo.png
-├── assets/mimo_conv_code.png
-├── example.jsonl        # Jeu de données fictif
+├── mohamed.jsonl
 ├── fine_tune_mimo.py
 ├── requirements.txt
-├── .gitignore
-└── LICENSE
+└── .gitignore
 ```
 
 ---
@@ -125,17 +228,7 @@ Mimo/
    - `fine_tune_mimo.py` → pour l’entraînement  
    - un script d’inférence personnalisé  
 
-⚡ Vous pouvez aussi utiliser Mimo dans **LM Studio** en important la version quantisée GGUF ou autre format.
-
----
-
-## 📜 Licence
-
-Ce projet est sous licence **Apache 2.0**.  
-Voir le fichier [LICENSE](LICENSE) pour les détails.
-
-⚠️ **Note importante** : le fichier `example.jsonl` est fourni uniquement comme exemple.  
-N’incluez jamais vos données sensibles ou privées dans le dépôt public.
+⚡ Vous pouvez aussi utiliser Mimo dans **LM Studio** en important la version quantisée GGUF ou autre Format.
 
 ---
 
